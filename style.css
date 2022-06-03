@@ -1,3 +1,11 @@
 body{
     margin: 0;
 }
+#scoreLable{
+    position : absolute;
+    color: aliceblue;
+    padding: 10px;
+    font-size: 20px;
+    font-family: sans-serif;
+    user-select: none;
+}
