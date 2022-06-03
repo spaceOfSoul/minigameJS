@@ -115,6 +115,8 @@ function animate(){
     player.draw();
     projectiles.forEach((projectile, pIndex) =>{
         projectile.update();
+
+        //remove edge screen
         if(projectile.x - projectile.radius < 0||
             projectile.x - projectile.radius > canvas.width ||
             projectile.y + projectile.radius < 0 ||
@@ -129,18 +131,32 @@ function animate(){
         enemy.update();
         const playerDist = Math.hypot(player.x - enemy.x,player.y-enemy.y);
 
+        //end game
         if(playerDist - enemy.radius - player.radius < 1){
             cancelAnimationFrame(animationId);
         }
+
+
         projectiles.forEach((projectile, pIndex) =>{
             const dist = Math.hypot(projectile.x - enemy.x,projectile.y-enemy.y);
 
-            //object collision
+            //enemy and projectile collision
             if(dist - enemy.radius - projectile.radius < 1){
-                setTimeout(()=>{
-                    enemies.splice(index,1);
-                    projectiles.splice(pIndex,1);
-                }, 0)
+
+                if(enemy.radius > 20){
+                    // enemy.radius -= 10;
+                    gsap.to(enemy,{
+                        radius : enemy.radius -10,
+                    });
+                    setTimeout(()=>{
+                        projectiles.splice(pIndex,1);
+                    }, 0)
+                }else{
+                    setTimeout(()=>{
+                        enemies.splice(index,1);
+                        projectiles.splice(pIndex,1);
+                    }, 0)
+                }
             }
         });
     });
