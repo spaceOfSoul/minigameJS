@@ -150,15 +150,17 @@ function animate(){
 
     player.draw();
 
-    particles.forEach((particle, index)=>{
+    for(let i = particles.length-1; i>=0; i--){
+        const particle = particles[i];
         if(particle.alpha <= 0){
-            particles.splice(index,1);
+            particles.splice(i,1);
         }else{
             particle.update();
         }
-    })
+    }
 
-    projectiles.forEach((projectile, pIndex) =>{
+    for(let i=projectiles.length-1; i>=0; i--){
+        const projectile = projectiles[i];
         projectile.update();
 
         //remove edge screen
@@ -166,23 +168,23 @@ function animate(){
             projectile.x - projectile.radius > canvas.width ||
             projectile.y + projectile.radius < 0 ||
             projectile.y - projectile.radius > canvas.height){
-            setTimeout(()=>{
-                projectiles.splice(pIndex,1);
-            }, 0);
+            projectiles.splice(i,1);
         }
-    });
+    }
 
-    enemies.forEach((enemy,index) =>{
+    for(let index=enemies.length-1; index>=0; index--){
+        const enemy = enemies[index];
         enemy.update();
         const playerDist = Math.hypot(player.x - enemy.x,player.y-enemy.y);
 
         //end game
         if(playerDist - enemy.radius - player.radius < 1){
+            clearInterval(timer);
             cancelAnimationFrame(animationId);
         }
 
-
-        projectiles.forEach((projectile, pIndex) =>{
+        for(let pIndex=projectiles.length-1; pIndex>=0; pIndex--){
+            const projectile = projectiles[pIndex];
             const dist = Math.hypot(projectile.x - enemy.x,projectile.y-enemy.y);
 
             //enemy and projectile collision
@@ -204,20 +206,16 @@ function animate(){
                     gsap.to(enemy,{
                         radius : enemy.radius -10,
                     });
-                    setTimeout(()=>{
-                        projectiles.splice(pIndex,1);
-                    }, 0)
+                    projectiles.splice(pIndex,1);
                 }else{
                     score += 10;
                     scoreLable.innerText = `Score : ${score}`;
-                    setTimeout(()=>{
-                        enemies.splice(index,1);
-                        projectiles.splice(pIndex,1);
-                    }, 0)
+                    enemies.splice(index,1);
+                    projectiles.splice(pIndex,1);
                 }
             }
-        });
-    });
+        }
+    }
 }
 
 addEventListener('mousedown',(e)=>{
@@ -232,3 +230,7 @@ addEventListener('mousedown',(e)=>{
 
 spawnEnemies();
 animate();
+timer = setInterval(()=>{
+    score++;
+    scoreLable.innerText = `Score : ${score}`;
+}, 1000);
