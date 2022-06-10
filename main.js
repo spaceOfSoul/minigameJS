@@ -1,6 +1,10 @@
 const canvas = document.querySelector('canvas');
-const scoreLable = document.querySelector('#scoreLable');
 const c = canvas.getContext('2d');
+
+const scoreLable = document.querySelector('#scoreLable');
+
+const gameoverEl = document.querySelector('.gameover');
+const finalScore = gameoverEl.querySelector('.score');
 
 canvas.width = window.innerWidth
 canvas.height = window.innerHeight
@@ -179,6 +183,8 @@ function animate(){
 
         //end game
         if(playerDist - enemy.radius - player.radius < 1){
+            gameoverEl.classList.remove('hidden');
+            finalScore.innerText = `${score}`;
             clearInterval(timer);
             cancelAnimationFrame(animationId);
         }
