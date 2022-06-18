@@ -11,6 +11,15 @@ body{
     font-size: 20px;
     user-select: none;
 }
+#restartButton{
+    margin-top: 12px;
+    background-color: blue;
+    border: none;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
 .gameover{
     position: absolute;
     background-color: white;

@@ -5,6 +5,7 @@ const scoreLable = document.querySelector('#scoreLable');
 
 const gameoverEl = document.querySelector('.gameover');
 const finalScore = gameoverEl.querySelector('.score');
+const restartButton = document.querySelector("#restartButton");
 
 canvas.width = window.innerWidth
 canvas.height = window.innerHeight
@@ -116,6 +117,8 @@ const player = new Player(x, y, 15, 'white');
 const projectiles = [];
 const enemies = [];
 const particles = [];
+let animationId;
+let score =0;
 
 function spawnEnemies(){
     setInterval(()=>{
@@ -143,9 +146,6 @@ function spawnEnemies(){
         enemies.push(new Enemy(x,y,radius,color,velocity));
     },enemyCount);
 }
-
-let animationId;
-let score =0;
 
 function animate(){
     animationId=requestAnimationFrame(animate);
@@ -232,6 +232,10 @@ addEventListener('mousedown',(e)=>{
         y: Math.sin(angle) *speed
     };
     projectiles.push(new Projectile( canvas.width/2, canvas.height/2, 5, 'white', velocity));
+});
+
+restartButton.addEventListener('click',(e)=>{
+    window.location.reload();
 });
 
 spawnEnemies();
