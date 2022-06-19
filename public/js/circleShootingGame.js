@@ -7,6 +7,10 @@ const gameoverEl = document.querySelector('.gameover');
 const finalScore = gameoverEl.querySelector('.score');
 const restartButton = document.querySelector("#restartButton");
 
+
+const startButton = document.querySelector("#startButton");
+const startModal = document.querySelector(".gameStart");
+
 canvas.width = window.innerWidth
 canvas.height = window.innerHeight
 
@@ -112,13 +116,22 @@ const x = canvas.width / 2;
 const y = canvas.height / 2;
 let enemyCount = 1000;
 
-const player = new Player(x, y, 15, 'white');
+let player = new Player(x, y, 15, 'white');
 
-const projectiles = [];
-const enemies = [];
-const particles = [];
+let projectiles = [];
+let enemies = [];
+let particles = [];
 let animationId;
 let score =0;
+
+function init(){
+    player = new Player(x, y, 15, 'white');
+    projectiles =[];
+    enemies = [];
+    particles = [];
+    animationId;
+    score = 0;
+}
 
 function spawnEnemies(){
     setInterval(()=>{
@@ -147,6 +160,9 @@ function spawnEnemies(){
     },enemyCount);
 }
 
+
+//애니메이션
+//게임 주 실행부
 function animate(){
     animationId=requestAnimationFrame(animate);
     c.fillStyle = 'rgba(0,0,0,0.1)';
@@ -223,6 +239,16 @@ function animate(){
         }
     }
 }
+function gameStart(){
+    init();
+    animate();
+    spawnEnemies();
+    scoreLable.innerText = `Score : ${score}`;
+    timer = setInterval(()=>{
+        score++;
+        scoreLable.innerText = `Score : ${score}`;
+    }, 1000);
+}
 
 addEventListener('mousedown',(e)=>{
     speed = 5;
@@ -235,12 +261,13 @@ addEventListener('mousedown',(e)=>{
 });
 
 restartButton.addEventListener('click',(e)=>{
-    window.location.reload();
+    gameStart();
+    gameoverEl.classList.add("hidden");
 });
 
-spawnEnemies();
-animate();
-timer = setInterval(()=>{
-    score++;
-    scoreLable.innerText = `Score : ${score}`;
-}, 1000);
+startButton.addEventListener('click', ()=>{
+    gameStart();
+    startModal.classList.add("hidden");
+});
+
+

@@ -9,6 +9,7 @@ require('dotenv').config();
 
 app.listen(process.env.PORT, ()=>{
     console.log("server start!");
+    console.log(`http://localhost:${process.env.PORT}`);
 });
 app.set('view engine','ejs');
 

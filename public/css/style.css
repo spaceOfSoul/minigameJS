@@ -11,7 +11,18 @@ body{
     font-size: 20px;
     user-select: none;
 }
-#restartButton{
+.bigGameButton{
+    margin-top: 12px;
+    background-color: blue;
+    border: none;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 20px;
+    font: bold;
+}
+.gameButton{
     margin-top: 12px;
     background-color: blue;
     border: none;
@@ -20,7 +31,7 @@ body{
     border-radius: 5px;
     cursor: pointer;
 }
-.gameover{
+.modal{
     position: absolute;
     background-color: white;
     top: 50%;

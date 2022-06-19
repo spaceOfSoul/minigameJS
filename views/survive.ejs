@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/public/css/style.css">
+    <title>survive!</title>
+</head>
+<body style="background-color : gray;">
+    <div>
+        <span id="scoreLable">Score : 0</span>
+    </div>
+
+    <div class="gameStart modal">
+        <h1 class="score">Game start!</h1>
+        <button class="gameButton" id="startButton">Start!</button>
+    </div>
+
+    <div class="gameover modal hidden">
+        <label class="txt">Game Over!</label>
+        <h1 class="score">0</h1>
+        <p>point</p>
+        <button class="gameButton" id="restartButton">Retart!</button>
+    </div>
+
+    <canvas></canvas>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js" integrity="sha512-VEBjfxWUOyzl0bAwh4gdLEaQyDYPvLrZql3pw1ifgb6fhEvZl9iDDehwHZ+dsMzA0Jfww8Xt7COSZuJ/slxc4Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="/public/js/circleShootingGame.js"></script>
+</body>
+</html>
