@@ -1,24 +1,43 @@
 const express = require('express');
 const app = express();
 const MongoClient = require('mongodb').MongoClient;
+const bodyParser = require('body-parser');
 
 const http = require('http').createServer(app);
 app.use('/public', express.static('public'));
+app.use(bodyParser.urlencoded({extended : true}));
 
 require('dotenv').config();
 
-app.listen(process.env.PORT, ()=>{
-    console.log("server start!");
-    console.log(`http://localhost:${process.env.PORT}`);
-});
 app.set('view engine','ejs');
 
 app.get('/', function (req, res) {
-    res.render('index.ejs');
+    res.render('survive.ejs');
   });
 
-MongoClient.connect(process.env.DB_URL,{useUnfiedTopolgy: true},(err,client)=>{
+var db;
+MongoClient.connect(process.env.DB_URL, { useUnifiedTopology: true },(err,client)=>{
     if(err){
-        return console.log('did not loading');
+        return console.log(err);
     }
-})
+    
+    db = client.db('gameRecordData');
+
+    app.listen(process.env.PORT, ()=>{
+        console.log("server start!");
+        console.log(`http://localhost:${process.env.PORT}`);
+    });
+});
+
+app.post('/upload',(req, res)=>{
+    console.log('send success');
+    console.log(req.body.score);
+    saveThis={score : parseInt(req.body.score), nickname: req.body.nickname};
+    db.collection('survive1Score').insertOne(saveThis,(err, result)=>{
+        if(err){
+            return console.log('upload fail');
+        }
+        console.log(saveThis);
+    });
+});
+

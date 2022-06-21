@@ -200,6 +200,14 @@ function animate(){
         //end game
         if(playerDist - enemy.radius - player.radius < 1){
             gameoverEl.classList.remove('hidden');
+
+            const uploadForm = gameoverEl.querySelector(".inputForm");
+            const scoreLi = document.createElement("input");
+            scoreLi.classList.add("hidden");
+            scoreLi.value = score;
+            scoreLi.name="score";
+            uploadForm.appendChild(scoreLi);
+
             finalScore.innerText = `${score}`;
             clearInterval(timer);
             cancelAnimationFrame(animationId);

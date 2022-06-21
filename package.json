@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/spaceOfSoul/minigameJS#readme",
   "dependencies": {
+    "body-parser": "^1.20.0",
     "crypto": "^1.0.1",
     "dotenv": "^16.0.1",
     "ejs": "^3.1.8",

@@ -18,9 +18,19 @@
     </div>
 
     <div class="gameover modal hidden">
-        <label class="txt">Game Over!</label>
-        <h1 class="score">0</h1>
-        <p>point</p>
+        <div class="yourScore">
+            <label class="txt">Game Over!</label>
+            <h1 name="score" class="score">0</h1>
+            <p>point</p>
+        </div>
+        <div class="ranking">
+
+        </div>
+        <form class="inputForm" action="/upload" method="post">
+            <label>기록 업로드</label>
+            <input type="text" class="form-control" name="nickname" required placeholder="닉네임">
+            <button class="gameButton" type="submit">기록저장</button>
+        </form>
         <button class="gameButton" id="restartButton">Retart!</button>
     </div>
 
