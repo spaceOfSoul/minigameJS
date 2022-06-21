@@ -12,6 +12,13 @@
         <span id="scoreLable" class="hidden">Score : 0</span>
     </div>
 
+    <div class="ranking modal">
+        <ul class="rankList">
+            <% for (let i = 0; i < rankingResult.length; i ++) { %>
+                <li><%= rankingResult[i].nickname %></li>
+            <% } %>
+        </ul>
+    </div>
     <div class="gameStart modal">
         <h1 class="score">Game start!</h1>
         <button class="gameButton" id="startButton">Start!</button>
@@ -24,7 +31,7 @@
             <p>point</p>
         </div>
         <div class="ranking">
-
+            <ul class="rankList"></ul>
         </div>
         <form class="inputForm" action="/upload" method="post">
             <label>기록 업로드</label>
@@ -38,5 +45,8 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js" integrity="sha512-VEBjfxWUOyzl0bAwh4gdLEaQyDYPvLrZql3pw1ifgb6fhEvZl9iDDehwHZ+dsMzA0Jfww8Xt7COSZuJ/slxc4Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="/public/js/circleShootingGame.js"></script>
+    <script>
+        
+    </script>
 </body>
 </html>

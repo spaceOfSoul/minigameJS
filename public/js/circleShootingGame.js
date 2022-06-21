@@ -7,7 +7,7 @@ const gameoverEl = document.querySelector('.gameover');
 const finalScore = gameoverEl.querySelector('.score');
 const restartButton = document.querySelector("#restartButton");
 
-
+const rankList = document.querySelector('.rankList');
 const startButton = document.querySelector("#startButton");
 const startModal = document.querySelector(".gameStart");
 
