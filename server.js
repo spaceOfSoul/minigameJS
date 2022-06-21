@@ -37,6 +37,7 @@ app.post('/upload',(req, res)=>{
         if(err){
             return console.log('upload fail');
         }
+        res.redirect('/');
         console.log(saveThis);
     });
 });

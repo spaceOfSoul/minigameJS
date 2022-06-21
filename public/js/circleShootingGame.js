@@ -131,6 +131,7 @@ function init(){
     particles = [];
     animationId;
     score = 0;
+    scoreLable.classList.remove('hidden');
 }
 
 function spawnEnemies(){
