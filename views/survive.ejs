@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/public/css/style.css">
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> -->
     <title>survive!</title>
 </head>
 <body style="background-color : gray;">
@@ -12,10 +13,11 @@
         <span id="scoreLable" class="hidden">Score : 0</span>
     </div>
 
-    <div class="ranking modal">
+    <div class="modal" id="ranking" style="top:30%;overflow:scroll; height:200px;">
+        <p>ranking</p>
         <ul class="rankList">
             <% for (let i = 0; i < rankingResult.length; i ++) { %>
-                <li><%= rankingResult[i].nickname %></li>
+                <li><%= rankingResult[i].nickname %> <%= rankingResult[i].score %></li>
             <% } %>
         </ul>
     </div>

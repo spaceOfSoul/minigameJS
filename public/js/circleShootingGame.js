@@ -7,7 +7,7 @@ const gameoverEl = document.querySelector('.gameover');
 const finalScore = gameoverEl.querySelector('.score');
 const restartButton = document.querySelector("#restartButton");
 
-const rankList = document.querySelector('.rankList');
+const rankingModal = document.querySelector('#ranking');
 const startButton = document.querySelector("#startButton");
 const startModal = document.querySelector(".gameStart");
 
@@ -276,6 +276,7 @@ restartButton.addEventListener('click',(e)=>{
 
 startButton.addEventListener('click', ()=>{
     gameStart();
+    rankingModal.classList.add("hidden");
     startModal.classList.add("hidden");
 });
 

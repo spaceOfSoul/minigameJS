@@ -4,6 +4,7 @@ body{
 }
 
 /*item*/
+
 #scoreLable{
     position : absolute;
     color: aliceblue;
@@ -65,7 +66,6 @@ body{
 .hidden{
     display: none;
 }
-
 /* .inputForm{
 
 } */

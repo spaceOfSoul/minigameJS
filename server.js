@@ -32,7 +32,10 @@ app.get('/', function (req, res) {
 });
 
 app.get('/game',(req, res)=>{
-    db.collection('survive1Score').find().toArray((err, result)=>{
+    db.collection('survive1Score').find().sort({score:-1}).toArray((err, result)=>{
+        if(err){
+            return console.log(err);
+        }
         res.render('survive.ejs',{rankingResult : result});
     });
 });
@@ -45,7 +48,7 @@ app.post('/upload',(req, res)=>{
         if(err){
             return console.log('upload fail');
         }
-        res.redirect('/');
+        res.redirect('/game');
         console.log(saveThis);
     });
 });
